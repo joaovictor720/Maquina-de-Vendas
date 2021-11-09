@@ -10,9 +10,17 @@ class Comida : public Produto
         Comida();
         virtual ~Comida();
 
-    protected:
+        // setters
+        void setPeso(double peso);
+        void setTamPacote(std::string tamanho);
+
+        // getters
+        double getPeso();
+        std::string getTamPacote();
 
     private:
+        double peso;
+        std::string tam_pacote;
 };
 
 #endif // COMIDA_H

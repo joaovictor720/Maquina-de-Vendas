@@ -10,9 +10,17 @@ class Bebida : public Produto
         Bebida();
         virtual ~Bebida();
 
-    protected:
+        // setters
+        void setVolume(double vol);
+        void setTipo(std::string tipo);
+
+        // getters
+        double getVolume();
+        std::string getTipo();
 
     private:
+        double volume;
+        std::string tipo;
 };
 
 #endif // BEBIDA_H

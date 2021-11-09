@@ -7,10 +7,21 @@ class Produto
 {
     public:
         Produto();
-        virtual ~Produto()=0;
+        virtual ~Produto() = 0;
 
         // setters
         void setNome(std::string nome);
+        void setPreco(double preco);
+        void setValidade(std::string val);
+        void setID(int id);
+        void setQtd(int qtd);
+
+        // getters
+        std::string getNome();
+        double getPreco();
+        std::string getValidade();
+        int getID();
+        int getQtd();
 
     protected:
         std::string nome;
