@@ -3,17 +3,14 @@
 
 #include "Maquina.h"
 
-class Menu
+class Menu : public Maquina
 {
     public:
         Menu();
         virtual ~Menu();
 
-        std::string getSenha();
-
-    private:
-        Maquina controle;
-        std::string senha;
+        void menuDev();
+        void menuUser();
 };
 
 #endif // MENU_H
