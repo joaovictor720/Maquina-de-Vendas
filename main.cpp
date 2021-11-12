@@ -7,6 +7,8 @@ int main()
 {
     string senha;
     Menu menu = Menu();
+    cout << "Carregando..." << endl;
+    menu.carregarEstoque();
 
     while (true){
         getline(cin, senha);

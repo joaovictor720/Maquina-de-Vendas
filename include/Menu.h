@@ -9,6 +9,7 @@ class Menu : public Maquina
         Menu();
         virtual ~Menu();
 
+        void carregarEstoque();
         void menuDev();
         void menuUser();
 };

@@ -21,6 +21,7 @@ void Maquina::venderProduto(int id){
             return;
         }
     }
+    cout << "Produto não existe" << endl;
 }
 void Maquina::cadastrarProduto(){
     string nome, tam_pacote, categoria;
@@ -28,7 +29,7 @@ void Maquina::cadastrarProduto(){
     double preco, volume, peso;
     int id, qtd;
     Produto *prod;
-    ofstream arq = ofstream("..\\estoque.txt", ios::out | ios::app);
+    ofstream arq = ofstream("C:\\Users\\João Victor\\Desktop\\LP1\\Maquina-de-Vendas\\estoque.txt", ios::out | ios::app);
     if (!arq.is_open()){
         cout << "Falha ao abrir arquivo" << endl;
         return;
@@ -92,10 +93,29 @@ void Maquina::cadastrarProduto(){
     }
     arq.close();
 }
-void mostrarOpcoes(){
-    for (int i = 0; i < 2; i++)
-        1*1;
-
-    return;
+void Maquina::mostrarOpcoes(){
+    for (int i = 0; i < produtos.size(); i++){
+        cout << i+1 << " - " << produtos[i]->getNome() << " - R$ " << produtos[i]->getPreco() << endl;
+        cout << "Quantidade: " << produtos[i]->getQtd() << endl;
+        cout << "-----------------------------------------" << endl;
+    }
 }
-void mostrarEstoque(){}
+void Maquina::mostrarEstoque(){
+    for (int i = 0; i < produtos.size(); i++){
+        cout << "Nome: " << produtos[i]->getNome() << endl;
+        cout << "ID: " << produtos[i]->getID() << endl;
+        cout << "Preco: " << produtos[i]->getPreco() << endl;
+        cout << "Quantidade: " << produtos[i]->getQtd() << endl;
+        cout << "Tipo: " << produtos[i]->getTipo() << endl;
+        cout << "Categoria: " << produtos[i]->getCategoria() << endl;
+
+        if (produtos[i]->getTipo() == 'b' || produtos[i]->getTipo() == 'B'){
+            cout << "Volume: " << produtos[i]->getVolume() << endl;
+        }else if (produtos[i]->getTipo() == 'c' || produtos[i]->getTipo() == 'C'){
+            cout << "Peso: " << produtos[i]->getPeso();
+            cout << "Tamanho: " << produtos[i]->getTamPacote();
+        }
+
+        cout << "-----------------------------------------" << endl;
+    }
+}
