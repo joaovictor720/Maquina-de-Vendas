@@ -84,7 +84,8 @@ void Maquina::cadastrarProduto(){
         << id << "\n"
         << preco << "\n"
         << qtd << "\n"
-        << tipo << "\n";
+        << tipo << "\n"
+        << categoria << "\n";
     if (tipo == 'b' || tipo == 'B'){
         arq << volume << endl;
     }else if (tipo == 'c' || tipo == 'C'){
@@ -95,13 +96,15 @@ void Maquina::cadastrarProduto(){
 }
 void Maquina::mostrarOpcoes(){
     for (int i = 0; i < produtos.size(); i++){
+        cout << "-----------------------------------------" << endl;
         cout << i+1 << " - " << produtos[i]->getNome() << " - R$ " << produtos[i]->getPreco() << endl;
         cout << "Quantidade: " << produtos[i]->getQtd() << endl;
-        cout << "-----------------------------------------" << endl;
+        cout << "-----------------------------------------\n" << endl;
     }
 }
 void Maquina::mostrarEstoque(){
     for (int i = 0; i < produtos.size(); i++){
+        cout << "-----------------------------------------" << endl;
         cout << "Nome: " << produtos[i]->getNome() << endl;
         cout << "ID: " << produtos[i]->getID() << endl;
         cout << "Preco: " << produtos[i]->getPreco() << endl;
@@ -112,10 +115,10 @@ void Maquina::mostrarEstoque(){
         if (produtos[i]->getTipo() == 'b' || produtos[i]->getTipo() == 'B'){
             cout << "Volume: " << produtos[i]->getVolume() << endl;
         }else if (produtos[i]->getTipo() == 'c' || produtos[i]->getTipo() == 'C'){
-            cout << "Peso: " << produtos[i]->getPeso();
-            cout << "Tamanho: " << produtos[i]->getTamPacote();
+            cout << "Peso: " << produtos[i]->getPeso() << endl;
+            cout << "Tamanho: " << produtos[i]->getTamPacote() << endl;
         }
 
-        cout << "-----------------------------------------" << endl;
+        cout << "-----------------------------------------\n" << endl;
     }
 }

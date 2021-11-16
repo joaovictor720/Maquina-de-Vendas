@@ -30,7 +30,7 @@ void Menu::carregarEstoque(){
         return;
     }
 
-    while (!arq.eof()){
+    while (arq.eof()){
         getline(arq, nome);
         arq >> id;
         arq >> preco;
@@ -85,15 +85,23 @@ void Menu::menuDev(){
                 break;
             case 4:
                 break;
+            case 5:
+                cout << "Saindo..." << endl;
+                return;
         }
     }
 }
 void Menu::menuUser(){
     int opcao, num_compras;
     while (true){
+        system("cls");
         mostrarOpcoes();
         cout << "Escolha seu produto: ";
         cin >> opcao;
+        if (opcao == 999){
+            menuDev();
+            continue;
+        }
         if (opcao < 0 || opcao > produtos.size()){
             cout << "Opcao invalida" << endl;
             continue;
