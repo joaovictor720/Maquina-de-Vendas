@@ -5,6 +5,14 @@ Comida::Comida()
     //ctor
 }
 
+Comida::Comida(std::string nome, double preco, int id, int qtd, char tipo, std::string categoria,
+               double peso, std::string tam_pacote)
+: Produto(nome, preco, id, qtd, tipo, categoria)
+{
+    this->peso = peso;
+    this->tam_pacote = tam_pacote;
+}
+
 Comida::~Comida()
 {
     //dtor

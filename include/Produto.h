@@ -7,6 +7,7 @@ class Produto
 {
     public:
         Produto();
+        Produto(std::string nome, double preco, int id, int qtd, char tipo, std::string categoria);
         virtual ~Produto() = 0;
 
         virtual void setVolume(double vol){}

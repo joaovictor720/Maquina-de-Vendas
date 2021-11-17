@@ -5,6 +5,15 @@ Produto::Produto()
     //ctor
 }
 
+Produto::Produto(std::string nome, double preco, int id, int qtd, char tipo, std::string categoria){
+    this->nome = nome;
+    this->preco = preco;
+    this->id = id;
+    this->qtd = qtd;
+    this->tipo = tipo;
+    this->categoria = categoria;
+}
+
 Produto::~Produto()
 {
     //dtor

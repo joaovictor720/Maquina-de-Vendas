@@ -8,6 +8,8 @@ class Bebida : public Produto
 {
     public:
         Bebida();
+        Bebida(std::string nome, double preco, int id, int qtd, char tipo, std::string categoria,
+               double volume);
         virtual ~Bebida();
 
         // setters
