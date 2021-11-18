@@ -17,6 +17,8 @@ int main()
             break;
         }
     }
+    
+    cout << "Desligando..." << endl;
 
     return 0;
 }
