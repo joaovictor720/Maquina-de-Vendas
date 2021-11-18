@@ -10,6 +10,7 @@ class Menu : public Maquina
         virtual ~Menu();
 
         void carregarEstoque();
+        void salvaEstoque();
         void menuDev();
         void menuUser();
 };

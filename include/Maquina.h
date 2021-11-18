@@ -4,7 +4,6 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
-#include <iomanip>
 #include "Produto.h"
 #include "Bebida.h"
 #include "Comida.h"
@@ -19,6 +18,8 @@ class Maquina
 
         void venderProduto(int id);
         void cadastrarProduto();
+        void atualizarProduto();
+        void deletarProduto();
         void mostrarOpcoes();
         void mostrarEstoque();
 
