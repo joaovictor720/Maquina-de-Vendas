@@ -5,9 +5,9 @@ Bebida::Bebida()
     //ctor
 }
 
-Bebida::Bebida(std::string nome, double preco, int id, int qtd, char tipo, std::string categoria,
-               double volume)
-: Produto(nome, preco, id, qtd, tipo, categoria)
+Bebida::Bebida(std::string nome, double preco, unsigned long id, int qtd, char tipo, std::string categoria, std::string sabor,
+               int volume)
+: Produto(nome, preco, id, qtd, tipo, categoria, sabor)
 {
     this->volume = volume;
 }
@@ -21,6 +21,6 @@ void Bebida::setVolume(double vol){
     volume = vol;
 }
 
-double Bebida::getVolume(){
+int Bebida::getVolume(){
     return volume;
 }

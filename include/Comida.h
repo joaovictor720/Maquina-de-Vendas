@@ -8,21 +8,18 @@ class Comida : public Produto
 {
     public:
         Comida();
-        Comida(std::string nome, double preco, int id, int qtd, char tipo, std::string categoria,
-               double peso, std::string tam_pacote);
+        Comida(std::string nome, double preco, unsigned long id, int qtd, char tipo, std::string categoria, std::string sabor,
+               unsigned long peso);
         virtual ~Comida();
 
         // setters
-        void setPeso(double peso);
-        void setTamPacote(std::string tamanho);
+        void setPeso(unsigned long peso);
 
         // getters
-        double getPeso();
-        std::string getTamPacote();
+        unsigned long getPeso();
 
     private:
-        double peso;
-        std::string tam_pacote;
+        unsigned long peso;
 };
 
 #endif // COMIDA_H

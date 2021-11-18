@@ -11,18 +11,36 @@ Menu::~Menu()
 }
 
 void ExibirOpcoes(){
-    cout << "1 - Mostrar estoque\n"
+    cout << "--- CONTROLE DA MAQUINA ---\n\n"
+         << "1 - Mostrar estoque\n"
          << "2 - Cadastrar produto\n"
          << "3 - Atualizar precos\n"
          << "4 - Remover produto\n"
-         << "5 - Sair\n" << endl;
+         << "5 - Controle de apurado\n"
+         << "6 - Sair\n"
+         << "7 - Desligar maquina\n" << endl;
+}
+
+string Menu::carregarSenha(){
+    ifstream arq = ifstream("SenhaVendingMachine.dat");
+    if (!arq.is_open()){
+        cout << "Falha ao abrir binario da senha" << endl;
+        usleep(DELAY);
+        return 0;
+    }
+    char senha[20];
+
+    arq.read(senha, sizeof(senha));
+    string s(senha);
+    return s;
 }
 
 void Menu::salvaEstoque(){
     ofstream arq = ofstream("estoque.txt", ios::out | ios::trunc);
-    
+
     if (!arq.is_open()){
         cout << "Falha ao abrir arquivo" << endl;
+        usleep(DELAY);
         return;
     }
 
@@ -33,79 +51,70 @@ void Menu::salvaEstoque(){
         arq << produtos[i]->getQtd() << endl;
         arq << produtos[i]->getTipo() << endl;
         arq << produtos[i]->getCategoria() << endl;
-        
+        arq << produtos[i]->getSabor() << endl;
+
         if (produtos[i]->getTipo() == 'b' || produtos[i]->getTipo() == 'B'){
             arq << produtos[i]->getVolume() << endl;
         } else if (produtos[i]->getTipo() == 'c' || produtos[i]->getTipo() == 'C'){
             arq << produtos[i]->getPeso() << endl;
-            arq << produtos[i]->getTamPacote() << endl;
         }
     }
 }
 
 void Menu::carregarEstoque(){
-    string nome, tam_pacote, categoria;
+    string nome, tam_pacote, categoria, sabor;
     char tipo;
-    double preco, volume, peso;
-    int id, qtd;
+    double preco;
+    unsigned long id, qtd, volume, peso;
     Produto *prod;
     ifstream arq = ifstream("estoque.txt", ios::in);
     if (!arq.is_open()){
         cout << "Falha ao ler o arquivo." << endl;
+        usleep(DELAY);
         return;
     }
 
     while (!arq.fail() && !arq.bad() && !arq.eof()){
-    //while (arq.tellg() != -1){
-        //system("cls");
-        //cout << "VOU CARREGAR UM PRODUTO" << endl;
-
         getline(arq, nome);
-        //cout << "tellg() nome " << arq.tellg() << endl;
-        //cout << "leu nome " << nome << endl;
+        if (nome == ""){
+            break;
+        }
 
         arq >> id;
-        //cout << "tellg() id " << arq.tellg() << endl;
-        //cout << "leu id " << id << endl;
 
         arq >> preco;
-        //cout << "tellg() preco " << arq.tellg() << endl;
-        //cout << "leu preco " << preco << endl;
 
         arq >> qtd;
-        //cout << "leu qtd " << qtd << endl;
+
         arq >> tipo;
         arq.ignore();
-        //cout << "leu tipo " << tipo << endl;
+
         getline(arq, categoria);
-        //cout << "leu categoria " << categoria << endl;
+
+        getline(arq, sabor);
+
         if (tipo == 'b' || tipo == 'B'){
-            //arq.seekg(15, ios::cur);
             arq >> volume;
             arq.ignore();
-            //cout << "leu volume " << volume << endl;
-            //cout << "tellg() volume " << arq.tellg() << endl;
-            prod = new Bebida(nome, preco, id, qtd, tipo, categoria, volume);
+
+            prod = new Bebida(nome, preco, id, qtd, tipo, categoria, sabor, volume);
         } else if (tipo == 'c' || tipo == 'C'){
-            //arq.seekg(15, ios::cur);
             arq >> peso;
             arq.ignore();
-            //cout << "tellg() peso " << arq.tellg() << endl;
-            getline(arq, tam_pacote);
-            //cout << "tellg() tam_pacote " << arq.tellg() << endl;
-            prod = new Comida(nome, preco, id, qtd, tipo, categoria, peso, tam_pacote);
+
+            prod = new Comida(nome, preco, id, qtd, tipo, categoria, sabor, peso);
         }else{
-            cout << "Tipo de produto invï¿½lido" << endl;
+            cout << "Tipo de produto inválido" << endl;
+            usleep(DELAY);
             return;
         }
-       
-        produtos.push_back(prod);
-        //cout << "tellg() final " << arq.tellg() << endl;
-        //cout << "produtos.size() = " << produtos.size() << endl;
-    }
-    arq.close();
-}
 
+        produtos.push_back(prod);
+    }
+    cout << "Estoque carregado" << endl;
+    arq.close();
+    usleep(DELAY);
+}
 void Menu::menuDev(){
     int opcao;
     while (true){
@@ -118,23 +127,29 @@ void Menu::menuDev(){
         switch (opcao){
             case 1:
                 mostrarEstoque();
-                break;
+                continue;
             case 2:
                 cadastrarProduto();
-                salvaEstoque();
                 break;
             case 3:
                 atualizarProduto();
-                salvaEstoque();
                 break;
             case 4:
                 deletarProduto();
-                salvaEstoque();
                 break;
             case 5:
+                controleApurado();
+                break;
+            case 6:
                 cout << "Saindo..." << endl;
+                usleep(DELAY);
                 return;
+            case 7:
+                desligar();
+                break;
         }
+        system("cls");
+        salvaEstoque();
     }
 }
 void Menu::menuUser(){
@@ -142,28 +157,56 @@ void Menu::menuUser(){
     while (true){
         system("cls");
         mostrarOpcoes();
+
         cout << "Escolha seu produto: ";
         cin >> opcao;
+        cin.ignore();
+
         if (opcao == 999){
-            menuDev();
-            continue;
+            string senha, scorreta;
+            scorreta = carregarSenha();
+
+            while (true){
+                system("cls");
+                cout << "Insira a senha de acesso (ou 0 para sair): ";
+                getline(cin, senha);
+
+                if (senha == scorreta){
+                    system("cls");
+                    menuDev();
+                    break;
+                }else if (senha == "0"){
+                    break;
+                }else{
+                    cout << "Senha invalida" << endl;
+                    usleep(DELAY);
+                }
+            }
+            continue; // volta a escolha de produto
         }
-        if (opcao < 0 || opcao > produtos.size()){
+        if (opcao <= 0 || opcao > produtos.size()){
             cout << "Opcao invalida" << endl;
+            usleep(DELAY);
             continue;
         }
 
-        cout << "Quantos \"" << produtos[ opcao-1 ]->getNome() << "\" voce quer: ";
+        cout << "Quantos \"" << produtos[ opcao-1 ]->getNome() << "\"";
+        if (produtos[ opcao-1 ]->getSabor() != "-"){
+            cout << " Sabor \"" << produtos[ opcao-1 ]->getSabor() << "\"";
+        }
+        cout << " voce quer: ";
         cin >> num_compras;
         int id = produtos[ opcao-1 ]->getID();
         for (int i = 0; i < num_compras; i++){
             try{
                 venderProduto(id);
             } catch (ProdutoEsgotadoException& esg){
-                cout << "Produto esgotado!" << endl;
-                cout << "Foram vendidos(as) " << i << '"' << produtos[ opcao-1 ]->getNome() << '"' << endl;
+                cout << "\nProduto esgotado!" << endl;
+                cout << "Foram vendidos(as) " << i << " \"" << produtos[ opcao-1 ]->getNome() << "\"" << endl;
+                usleep(DELAY);
                 break;
             }
         }
+        salvaEstoque();
     }
 }

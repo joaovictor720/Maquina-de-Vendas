@@ -8,18 +8,18 @@ class Bebida : public Produto
 {
     public:
         Bebida();
-        Bebida(std::string nome, double preco, int id, int qtd, char tipo, std::string categoria,
-               double volume);
+        Bebida(std::string nome, double preco, unsigned long id, int qtd, char tipo, std::string categoria, std::string sabor,
+               int volume);
         virtual ~Bebida();
 
         // setters
         void setVolume(double vol);
 
         // getters
-        double getVolume();
+        int getVolume();
 
     private:
-        double volume;
+        int volume;
 };
 
 #endif // BEBIDA_H

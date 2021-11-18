@@ -7,18 +7,17 @@ class Produto
 {
     public:
         Produto();
-        Produto(std::string nome, double preco, int id, int qtd, char tipo, std::string categoria);
+        Produto(std::string nome, double preco, unsigned long id, int qtd, char tipo, std::string categoria, std::string sabor);
         virtual ~Produto() = 0;
 
         virtual void setVolume(double vol){}
-        virtual void setPeso(double peso){}
-        virtual void setTamPacote(std::string tamanho){}
+        virtual void setPeso(unsigned long peso){}
 
-        virtual double getVolume(){return 0;}
-        virtual double getPeso(){return 0;}
-        virtual std::string getTamPacote(){return "";}
+        virtual int getVolume(){return 0;}
+        virtual unsigned long getPeso(){return 0;}
 
         void decQtd();
+        void addQtd(int qtd);
 
         // setters
         void setNome(std::string nome);
@@ -27,22 +26,25 @@ class Produto
         void setQtd(int qtd);
         void setTipo(char tipo);
         void setCategoria(std::string categoria);
+        void setSabor(std::string sabor);
 
         // getters
         std::string getNome();
         double getPreco();
-        int getID();
+        unsigned long getID();
         int getQtd();
         char getTipo();
         std::string getCategoria();
+        std::string getSabor();
 
     protected:
         std::string nome;
         double preco;
-        int id;
+        unsigned long id;
         int qtd;
         char tipo;
         std::string categoria;
+        std::string sabor;
 };
 
 #endif // PRODUTO_H

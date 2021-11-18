@@ -5,12 +5,11 @@ Comida::Comida()
     //ctor
 }
 
-Comida::Comida(std::string nome, double preco, int id, int qtd, char tipo, std::string categoria,
-               double peso, std::string tam_pacote)
-: Produto(nome, preco, id, qtd, tipo, categoria)
+Comida::Comida(std::string nome, double preco, unsigned long id, int qtd, char tipo, std::string categoria, std::string sabor,
+               unsigned long peso)
+: Produto(nome, preco, id, qtd, tipo, categoria, sabor)
 {
     this->peso = peso;
-    this->tam_pacote = tam_pacote;
 }
 
 Comida::~Comida()
@@ -18,16 +17,10 @@ Comida::~Comida()
     //dtor
 }
 
-void Comida::setPeso(double peso){
+void Comida::setPeso(unsigned long peso){
     this->peso = peso;
 }
-void Comida::setTamPacote(std::string tamanho){
-    tam_pacote = tamanho;
-}
 
-double Comida::getPeso(){
+unsigned long Comida::getPeso(){
     return peso;
-}
-std::string Comida::getTamPacote(){
-    return tam_pacote;
 }

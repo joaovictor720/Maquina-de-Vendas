@@ -8,12 +8,14 @@ int main()
     Menu menu = Menu();
     cout << "Carregando estoque..." << endl;
     menu.carregarEstoque();
-    cout << "Estoque carregado" << endl;
-    //cout << "VOU CHAMAR mostrarEstoque()" << endl;
-    //menu.mostrarEstoque();
+    menu.carregarApurado();
 
     while (true){
-        menu.menuUser();
+        try {
+            menu.menuUser();
+        } catch (Desligamento& d){
+            break;
+        }
     }
 
     return 0;
