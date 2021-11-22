@@ -13,7 +13,7 @@ class Bebida : public Produto
         virtual ~Bebida();
 
         // setters
-        void setVolume(double vol);
+        void setVolume(int vol);
 
         // getters
         int getVolume();

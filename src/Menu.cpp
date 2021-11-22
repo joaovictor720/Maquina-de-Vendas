@@ -34,7 +34,7 @@ string Menu::carregarSenha(){
     string s(senha);
     return s;
 }
-
+/*
 void Menu::salvaEstoque(){
     ofstream arq = ofstream("estoque.txt", ios::out | ios::trunc);
 
@@ -114,7 +114,7 @@ void Menu::carregarEstoque(){
     cout << "Estoque carregado" << endl;
     arq.close();
     usleep(DELAY);
-}
+}*/
 void Menu::menuDev(){
     int opcao;
     while (true){

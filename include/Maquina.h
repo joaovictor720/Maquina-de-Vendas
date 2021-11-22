@@ -20,22 +20,23 @@ class Maquina
         Maquina();
         virtual ~Maquina();
 
-        void venderProduto(unsigned long id);
+        /*void venderProduto(unsigned long id);
         void cadastrarProduto();
         void atualizarProduto();
-        void deletarProduto();
-        void mostrarOpcoes();
-        void mostrarEstoque();
-        void controleApurado();
+        void deletarProduto();*/
+
+        //void mostrarOpcoes();
+        //void mostrarEstoque();
+
+        /*void controleApurado();
         void salvarApurado();
-        void carregarApurado();
+        void carregarApurado();*/
 
     protected:
         void desligar();
 
         vector<Produto*> produtos;
-
-    private: double apurado;
+        //double apurado;
 };
 
 #endif // MAQUINA_H

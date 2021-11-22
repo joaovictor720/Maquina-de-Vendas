@@ -1,8 +1,9 @@
 #ifndef PRODUTOESGOTADOEXCEPTION_H
 #define PRODUTOESGOTADOEXCEPTION_H
 
+#include <exception>
 
-class ProdutoEsgotadoException
+class ProdutoEsgotadoException : public std::exception
 {
     public:
         ProdutoEsgotadoException();

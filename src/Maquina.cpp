@@ -9,7 +9,7 @@ Maquina::~Maquina()
 {
     //dtor
 }
-
+/*
 void Maquina::venderProduto(unsigned long id){
     for (unsigned long i = 0; i < produtos.size(); i++){
         if (produtos[i]->getID() == id){
@@ -130,7 +130,8 @@ void Maquina::deletarProduto(){
 
     produtos.erase(produtos.begin() + (opcao - 1));
 }
-
+*/
+/*
 void Maquina::mostrarOpcoes(){
     for (unsigned long i = 0; i < produtos.size(); i++){
         cout << "=========================================" << endl;
@@ -167,11 +168,11 @@ void Maquina::mostrarEstoque(){
         cout << "-----------------------------------------\n" << endl;
     }
 }
-
+*/
 void Maquina::desligar(){
     throw Desligamento();
 }
-
+/*
 void Maquina::controleApurado(){
     int opcao;
     double saque;
@@ -221,3 +222,4 @@ void Maquina::carregarApurado(){
     arq >> apurado;
     arq.close();
 }
+*/

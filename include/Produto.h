@@ -10,7 +10,7 @@ class Produto
         Produto(std::string nome, double preco, unsigned long id, int qtd, char tipo, std::string categoria, std::string sabor);
         virtual ~Produto() = 0;
 
-        virtual void setVolume(double vol){}
+        virtual void setVolume(int vol){}
         virtual void setPeso(unsigned long peso){}
 
         virtual int getVolume(){return 0;}

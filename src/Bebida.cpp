@@ -17,7 +17,7 @@ Bebida::~Bebida()
     //dtor
 }
 
-void Bebida::setVolume(double vol){
+void Bebida::setVolume(int vol){
     volume = vol;
 }
 
