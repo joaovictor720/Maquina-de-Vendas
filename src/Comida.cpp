@@ -5,7 +5,7 @@ Comida::Comida()
     //ctor
 }
 
-Comida::Comida(std::string nome, double preco, unsigned long id, int qtd, char tipo, std::string categoria, std::string sabor,
+Comida::Comida(std::string nome, double preco, std::string id, int qtd, char tipo, std::string categoria, std::string sabor,
                unsigned long peso)
 : Produto(nome, preco, id, qtd, tipo, categoria, sabor)
 {

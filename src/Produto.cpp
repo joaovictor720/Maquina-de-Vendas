@@ -5,7 +5,7 @@ Produto::Produto()
     //ctor
 }
 
-Produto::Produto(std::string nome, double preco, unsigned long id, int qtd, char tipo, std::string categoria, std::string sabor){
+Produto::Produto(std::string nome, double preco, std::string id, int qtd, char tipo, std::string categoria, std::string sabor){
     this->nome = nome;
     this->preco = preco;
     this->id = id;
@@ -30,7 +30,7 @@ void Produto::setNome(std::string nome){
 void Produto::setPreco(double preco){
     this->preco = preco;
 }
-void Produto::setID(int id){
+void Produto::setID(std::string id){
     this->id = id;
 }
 void Produto::setQtd(int qtd){
@@ -51,7 +51,7 @@ void Produto::addQtd(int qtd){
 
 std::string Produto::getNome(){ return nome; }
 double Produto::getPreco(){ return preco; }
-unsigned long Produto::getID(){ return id; }
+std::string Produto::getID(){ return id; }
 int Produto::getQtd(){ return qtd; }
 char Produto::getTipo(){ return tipo; }
 std::string Produto::getCategoria(){ return categoria; }

@@ -6,19 +6,15 @@ using namespace std;
 int main()
 {
     Menu menu = Menu();
-    cout << "Carregando estoque..." << endl;
+
     menu.carregarEstoque();
     menu.carregarApurado();
 
-    while (true){
-        try {
-            menu.menuUser();
-        } catch (Desligamento& d){
-            break;
-        }
+    try {
+        menu.menuUser();
+    } catch (Desligamento& d){
+        cout << "Desligando..." << endl;
     }
-    
-    cout << "Desligando..." << endl;
 
     return 0;
 }

@@ -7,7 +7,7 @@ class Produto
 {
     public:
         Produto();
-        Produto(std::string nome, double preco, unsigned long id, int qtd, char tipo, std::string categoria, std::string sabor);
+        Produto(std::string nome, double preco, std::string id, int qtd, char tipo, std::string categoria, std::string sabor);
         virtual ~Produto() = 0;
 
         virtual void setVolume(int vol){}
@@ -22,7 +22,7 @@ class Produto
         // setters
         void setNome(std::string nome);
         void setPreco(double preco);
-        void setID(int id);
+        void setID(std::string id);
         void setQtd(int qtd);
         void setTipo(char tipo);
         void setCategoria(std::string categoria);
@@ -31,7 +31,7 @@ class Produto
         // getters
         std::string getNome();
         double getPreco();
-        unsigned long getID();
+        std::string getID();
         int getQtd();
         char getTipo();
         std::string getCategoria();
@@ -40,7 +40,7 @@ class Produto
     protected:
         std::string nome;
         double preco;
-        unsigned long id;
+        std::string id;
         int qtd;
         char tipo;
         std::string categoria;

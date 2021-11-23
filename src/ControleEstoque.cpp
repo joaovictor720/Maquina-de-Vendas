@@ -14,7 +14,7 @@ void ControleEstoque::salvaEstoque(){
     ofstream arq = ofstream("estoque.txt", ios::out | ios::trunc);
 
     if (!arq.is_open()){
-        cout << "Falha ao abrir arquivo" << endl;
+        cout << "Falha ao salvar o estoque." << endl;
         usleep(DELAY);
         return;
     }
@@ -37,14 +37,15 @@ void ControleEstoque::salvaEstoque(){
 }
 
 void ControleEstoque::carregarEstoque(){
-    string nome, tam_pacote, categoria, sabor;
+    cout << "Carregando estoque..." << endl;
+    string nome, tam_pacote, categoria, sabor, id;
     char tipo;
     double preco;
-    unsigned long id, qtd, volume, peso;
+    unsigned long qtd, volume, peso;
     Produto *prod;
     ifstream arq = ifstream("estoque.txt", ios::in);
     if (!arq.is_open()){
-        cout << "Falha ao ler o arquivo." << endl;
+        cout << "Falha ao carregar o estoque." << endl;
         usleep(DELAY);
         return;
     }
@@ -55,7 +56,7 @@ void ControleEstoque::carregarEstoque(){
             break;
         }
 
-        arq >> id;
+        getline(arq, id);
 
         arq >> preco;
 
@@ -86,7 +87,7 @@ void ControleEstoque::carregarEstoque(){
 
         produtos.push_back(prod);
     }
-    cout << "Estoque carregado" << endl;
+    cout << "Estoque carregado." << endl;
     arq.close();
     usleep(DELAY);
 }

@@ -10,7 +10,7 @@ ControleProduto::~ControleProduto()
     //dtor
 }
 
-void ControleProduto::venderProduto(unsigned long id){
+void ControleProduto::venderProduto(std::string id){
     for (unsigned long i = 0; i < produtos.size(); i++){
         if (produtos[i]->getID() == id){
             if (produtos[i]->getQtd() <= 0){
@@ -21,20 +21,20 @@ void ControleProduto::venderProduto(unsigned long id){
             return;
         }
     }
-    cout << "Produto não existe" << endl;
+    cout << "Produto não existe." << endl;
     usleep(DELAY);
 }
 void ControleProduto::cadastrarProduto(){
-    string nome, tam_pacote, categoria, sabor;
+    string nome, tam_pacote, categoria, sabor, id;
     char tipo;
     double preco;
-    unsigned long id, qtd, volume, peso;
+    unsigned long qtd, volume, peso;
     Produto *prod;
 
     cout << "Nome do produto: ";
     getline(cin, nome);
     cout << "ID: ";
-    cin >> id;
+    getline(cin, id);
     cout << "Preco: R$ ";
     cin >> preco;
     cout << "Quantidade: ";
@@ -45,7 +45,7 @@ void ControleProduto::cadastrarProduto(){
     cin.ignore();
     cout << "Categoria: ";
     getline(cin, categoria);
-    cout << "Sabor ( '-' para nenhum): ";
+    cout << "Sabor ( - para nenhum): ";
     getline(cin, sabor);
     if (tipo == 'b' || tipo == 'B'){
         cout << "Volume (em mL): ";
@@ -83,7 +83,7 @@ void ControleProduto::atualizarProduto(){
         }
     }
     if (!produtoExiste){
-        cout << "Produto nao existe" << endl;
+        cout << "Produto nao existe." << endl;
         usleep(DELAY);
         return;
     }
@@ -121,7 +121,7 @@ void ControleProduto::deletarProduto(){
         return;
     }
     if (opcao < 0 || opcao > produtos.size()){
-        cout << "Opcao invalida" << endl;
+        cout << "Opcao invalida." << endl;
         usleep(DELAY);
         return;
     }

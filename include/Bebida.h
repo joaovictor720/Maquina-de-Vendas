@@ -8,7 +8,7 @@ class Bebida : public Produto
 {
     public:
         Bebida();
-        Bebida(std::string nome, double preco, unsigned long id, int qtd, char tipo, std::string categoria, std::string sabor,
+        Bebida(std::string nome, double preco, std::string id, int qtd, char tipo, std::string categoria, std::string sabor,
                int volume);
         virtual ~Bebida();
 

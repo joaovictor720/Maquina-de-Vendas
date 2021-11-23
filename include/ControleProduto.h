@@ -11,7 +11,7 @@ class ControleProduto : public ControleApurado, public Exibidor
         ControleProduto();
         virtual ~ControleProduto();
 
-        void venderProduto(unsigned long id);
+        void venderProduto(std::string id);
 
     protected:
         void cadastrarProduto();

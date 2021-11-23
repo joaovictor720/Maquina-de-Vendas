@@ -24,7 +24,7 @@ void ExibirOpcoes(){
 string Menu::carregarSenha(){
     ifstream arq = ifstream("SenhaVendingMachine.dat");
     if (!arq.is_open()){
-        cout << "Falha ao abrir binario da senha" << endl;
+        cout << "Falha ao carregar binario da senha." << endl;
         usleep(DELAY);
         return 0;
     }
@@ -61,7 +61,7 @@ void Menu::menuDev(){
                 controleApurado();
                 break;
             case 6:
-                cout << "Saindo..." << endl;
+                cout << "Voltando ao menu de usuario..." << endl;
                 usleep(DELAY);
                 return;
             case 7:
@@ -98,25 +98,25 @@ void Menu::menuUser(){
                 }else if (senha == "0"){
                     break;
                 }else{
-                    cout << "Senha invalida" << endl;
+                    cout << "Senha invalida." << endl;
                     usleep(DELAY);
                 }
             }
             continue; // volta a escolha de produto
         }
         if (opcao <= 0 || opcao > produtos.size()){
-            cout << "Opcao invalida" << endl;
+            cout << "Opcao invalida." << endl;
             usleep(DELAY);
             continue;
         }
 
-        cout << "Quantos \"" << produtos[ opcao-1 ]->getNome() << "\"";
+        cout << "Quantos(as) \"" << produtos[ opcao-1 ]->getNome() << "\"";
         if (produtos[ opcao-1 ]->getSabor() != "-"){
-            cout << " Sabor \"" << produtos[ opcao-1 ]->getSabor() << "\"";
+            cout << " de Sabor \"" << produtos[ opcao-1 ]->getSabor() << "\"";
         }
         cout << " voce quer: ";
         cin >> num_compras;
-        int id = produtos[ opcao-1 ]->getID();
+        string id = produtos[ opcao-1 ]->getID();
         for (int i = 0; i < num_compras; i++){
             try{
                 venderProduto(id);
