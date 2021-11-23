@@ -45,7 +45,7 @@ void ControleEstoque::carregarEstoque(){
     Produto *prod;
     ifstream arq = ifstream("estoque.txt", ios::in);
     if (!arq.is_open()){
-        cout << "Falha ao carregar o estoque." << endl;
+        cout << "Estoque inexistente/Falha ao carregar o estoque." << endl;
         usleep(DELAY);
         return;
     }
@@ -80,7 +80,7 @@ void ControleEstoque::carregarEstoque(){
 
             prod = new Comida(nome, preco, id, qtd, tipo, categoria, sabor, peso);
         }else{
-            cout << "Tipo de produto inválido" << endl;
+            cout << "Tipo de produto invÃ¡lido" << endl;
             usleep(DELAY);
             return;
         }
