@@ -52,7 +52,7 @@ void ControleApurado::carregarApurado(){
     cout << "Carregango apurado..." << endl;
     ifstream arq = ifstream("apurado.txt");
     if (!arq.is_open()){
-        cout << "Falha ao carregar o apurado." << endl;
+        cout << "Arquivo de apurado inexistente/Falha ao carregar o apurado." << endl;
         usleep(DELAY);
         return;
     }
