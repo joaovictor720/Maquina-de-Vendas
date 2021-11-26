@@ -13,6 +13,9 @@ int main()
     try {
         menu.menuUser();
     } catch (Desligamento& d){
+        menu.salvaEstoque();
+        menu.salvarApurado();
+        cout << "Estoque e Apurado armazenados." << endl;
         cout << "Desligando..." << endl;
     }
 
