@@ -1,9 +1,7 @@
 #ifndef MENU_H
 #define MENU_H
 
-//#include "Maquina.h"
 #include "ControleProduto.h"
-//#include "ControleApurado.h"
 #include "ControleEstoque.h"
 
 class Menu : public ControleProduto, public ControleEstoque
@@ -12,8 +10,6 @@ class Menu : public ControleProduto, public ControleEstoque
         Menu();
         virtual ~Menu();
 
-        //void carregarEstoque();
-        //void salvaEstoque();
         void menuUser();
 
     private:
